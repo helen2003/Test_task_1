@@ -23,9 +23,6 @@ export class BookModel implements Book {
   @Field(() => Date)
   deletedDate: Date;
 
-  @Field(() => Int)
-  authorsId: number;
-
   @Field(() => AuthorModel, { nullable: true })
   authors: Author;
 }

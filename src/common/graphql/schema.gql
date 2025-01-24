@@ -9,7 +9,6 @@ type BookModel {
   createdDate: DateTime!
   updatedDate: DateTime!
   deletedDate: DateTime!
-  authorsId: Int!
   authors: AuthorModel
 }
 
