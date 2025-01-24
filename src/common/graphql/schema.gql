@@ -1,0 +1,72 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BookModel {
+  id: Int!
+  name: String!
+  description: String!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+  deletedDate: DateTime!
+  authorsId: Int!
+  authors: AuthorModel
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AuthorModel {
+  id: Int!
+  surname: String!
+  name: String!
+  patronymic: String!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+  deletedDate: DateTime!
+  books: [BookModel!]
+}
+
+type Query {
+  getOneAutors(id: Int!): AuthorModel!
+  getAllAuthors: [AuthorModel!]!
+  getOneBook(id: Int!): BookModel!
+  getAllBooks: [BookModel!]!
+}
+
+type Mutation {
+  createAuthor(createAuthorData: CreateAuthorsInput!): AuthorModel!
+  updateAuthor(updateAuthorData: UpdateAuthorsInput!): AuthorModel!
+  deleteAuthor(id: Int!): AuthorModel!
+  createBook(createBookData: CreateBooksInput!): BookModel!
+  updateBook(updateBookData: UpdateBooksInput!): BookModel!
+  deleteBook(id: Int!): BookModel!
+}
+
+input CreateAuthorsInput {
+  surname: String!
+  name: String!
+  patronymic: String!
+}
+
+input UpdateAuthorsInput {
+  id: Int!
+  surname: String
+  name: String
+  patronymic: String
+}
+
+input CreateBooksInput {
+  name: String!
+  description: String!
+  authorsId: Int!
+}
+
+input UpdateBooksInput {
+  id: Int!
+  name: String
+  description: String
+  authorsId: Int
+}
